@@ -37,6 +37,15 @@ contract UniV2SpatialArbTest is Test {
         assertEq(expectedLiquidity, actualLiquidity);
     }
 
+    function testTokenBalancer(
+        address account,
+        uint256 expectedBalance,
+    ) private {
+        IERC20 token = IERC20(tokenAddr);
+        uint256 actualBalance = token.balanceOf(account);
+        asssertEq(expectedBalance, actualBalance);
+    }
+
     function testStatePool1() public {
         testPoolState(
             0x847b64f9d3A95e977D157866447a5C0A5dFa0Ee5,
@@ -58,6 +67,13 @@ contract UniV2SpatialArbTest is Test {
             0x45dDa9cb7c25131DF268515131f647d726f50608,
             2158492202962238680259690147925313,
             588702194510526627
+        );
+    }
+
+    function testTokenBalance1() public {
+        testTokenBalance(
+            0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6,
+            109434379418
         );
     }
 }
