@@ -6,6 +6,7 @@ import "@forge-std/src/Test.sol";
 import "@forge-std/src/console2.sol";
 
 import '@uni-v3-core/contracts/interfaces/IUniswapV3Pool.sol';
+import '@openzeppelin/token/ERC20/IERC20.sol';
 
 interface Hevm {
     function createFork(string calldata urlOrAlias, bytes32 transaction) external returns (uint256);
