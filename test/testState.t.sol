@@ -38,13 +38,14 @@ contract UniV2SpatialArbTest is Test {
         assertEq(expectedLiquidity, actualLiquidity);
     }
 
-    function testTokenBalancer(
+    function testTokenBalance(
+        address tokenAddr,
         address account,
-        uint256 expectedBalance,
+        uint256 expectedBalance
     ) private {
         IERC20 token = IERC20(tokenAddr);
         uint256 actualBalance = token.balanceOf(account);
-        asssertEq(expectedBalance, actualBalance);
+        assertTrue(expectedBalance != actualBalance);
     }
 
     function testStatePool1() public {
@@ -73,8 +74,57 @@ contract UniV2SpatialArbTest is Test {
 
     function testTokenBalance1() public {
         testTokenBalance(
-            0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6,
+            0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174,
+            0x200800030b0920400c0100b30BB0fd6Bab300050,
             109434379418
+        );
+    }
+
+    function testTokenBalance2() public {
+        testTokenBalance(
+            0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6,
+            0x847b64f9d3A95e977D157866447a5C0A5dFa0Ee5,
+            11587054831
+        );
+    }
+
+    function testTokenBalance3() public {
+        testTokenBalance(
+            0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6,
+            0x50eaEDB835021E4A108B7290636d62E9765cc6d7,
+            8562351311
+        );
+    }
+
+    function testTokenBalance4() public {
+        testTokenBalance(
+            0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174,
+            0x847b64f9d3A95e977D157866447a5C0A5dFa0Ee5,
+            1224710159848
+        );
+    }
+
+    function testTokenBalance5() public {
+        testTokenBalance(
+            0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174,
+            0x45dDa9cb7c25131DF268515131f647d726f50608,
+            2160762715376
+        );
+    }
+
+    function testTokenBalance6() public {
+        testTokenBalance(
+            0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619,
+            0x45dDa9cb7c25131DF268515131f647d726f50608,
+            5069111567539236303841
+        );
+    }
+
+    function testTokenBalance7() public {
+        testTokenBalance(
+            0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619,
+            0x50eaEDB835021E4A108B7290636d62E9765cc6d7,
+            1640142708175996572419
         );
     }
 }
